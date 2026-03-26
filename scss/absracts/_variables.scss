@@ -46,6 +46,38 @@ $d-danger: #ff8a8a;
 // Shadow
 $d-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 
+// Colors pallet for theme switcher
+
+$l-label-linear-gradiend: linear-gradient(
+  20deg,
+  rgba(118, 150, 191, 1) 0%,
+  rgba(185, 208, 225, 1) 50%,
+  rgba(223, 224, 208, 1) 100%
+);
+$l-circle-radial-gradient: radial-gradient(
+  circle,
+  rgba(47, 56, 68, 1) 0%,
+  rgba(22, 32, 48, 1) 100%
+);
+$d-label-linear-gradiend: linear-gradient(
+  197deg,
+  rgba(145, 150, 151, 1) 0%,
+  rgba(20, 31, 47, 1) 100%
+);
+$d-circle-radial-gradient: radial-gradient(
+  circle,
+  rgba(225, 206, 153, 1) 0%,
+  rgba(228, 199, 122, 1) 100%
+);
+$l-dark-clound-bg: rgb(230, 230, 230);
+$d-dark-clound-bg: rgb(230, 230, 230);
+
+$l-light-clound-bg: #ffffff;
+$d-light-clound-bg: #ffffff;
+
+$l-circle-border: #fefcf4;
+$d-circle-border: #fefcf4;
+
 :root {
   --bg-main: #{$l-bg-main};
   --bg-card: #{$l-bg-card};
@@ -62,6 +94,11 @@ $d-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   --danger: #{$l-danger};
 
   --shadow: #{$l-shadow};
+  --label-linear-gradiend: #{$l-label-linear-gradiend};
+  --circle-radial-gradient: #{$l-circle-radial-gradient};
+  --light-clound-bg: #{$l-light-clound-bg};
+  --dark-clound-bg: #{$l-dark-clound-bg};
+  --circle-border: #{$l-circle-border};
 }
 [data-theme="dark"] {
   --bg-main: #{$d-bg-main};
@@ -79,4 +116,10 @@ $d-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   --danger: #{$d-danger};
 
   --shadow: #{$d-shadow};
+
+  --label-linear-gradiend: #{$d-label-linear-gradiend};
+  --circle-radial-gradient: #{$d-circle-radial-gradient};
+  --light-clound-bg: #{$d-light-clound-bg};
+  --dark-clound-bg: #{$d-dark-clound-bg};
+  --circle-border: #{$d-circle-border};
 }
