@@ -5,4 +5,5 @@ export const DOM_VAR = {
   decorationSpans: document.querySelectorAll(".span"),
   taskList: document.querySelector(".task-list"),
   taskNavigation: document.querySelector(".main__task-navigation"),
+  navBtns: document.querySelectorAll(".main__task-navigation .btn"),
 };
