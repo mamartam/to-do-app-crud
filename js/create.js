@@ -1,70 +1,45 @@
-const formToAddTask = document.querySelector(".todo-form");
-const newTaskInput = document.querySelector("#new-task");
-const addTaskBtn = document.querySelector(".todo-form__submit-btn");
-const decorationSpans = document.querySelectorAll(".span");
-const taskList = document.querySelector(".task-list");
-
-let tasksArray = JSON.parse(localStorage.getItem("tasks")) || [];
-console.log(tasksArray);
-getDataFromLS(taskList, tasksArray);
-formToAddTask.addEventListener("submit", (event) => {
-  event.preventDefault();
-  let id = idCreator();
-  reportDataIntoLS(newTaskInput.value, false, id, tasksArray);
-  appendNewTask(taskList, id, newTaskInput.value);
-  clearInputField(newTaskInput);
-
-  addClass(decorationSpans, "animation");
-
-  removeClassWithDelay(decorationSpans, "animation", 1000);
-
-  disableElement(addTaskBtn);
-});
-
-newTaskInput.addEventListener("input", (event) => {
-  let inputValue = String(event.target.value).trim();
-  addTaskBtn.disabled = isInputEmpty(inputValue);
-});
-
-// FUNCTIONS
-function clearInputField(inputField) {
-  inputField.value = "";
-}
-
-function addClass(elements, className) {
-  elements.forEach((element) => {
-    element.classList.add(className);
-  });
-}
-function removeClassWithDelay(elements, className, delayTime) {
-  setTimeout(() => {
-    elements.forEach((element) => {
-      element.classList.remove(className);
-    });
-  }, delayTime);
-}
-
-function isInputEmpty(inputField) {
-  return inputField.length === 0;
-}
-
-function disableElement(element) {
-  element.disabled = true;
-}
-
-function reportDataIntoLS(textContent, status, id, array) {
-  array.push({ taskId: id, taskStatus: status, taskBody: textContent });
-  updateLSArray("tasks", array);
-}
-
 // crete id function
-function idCreator() {
+
+import { isInputEmpty } from "./functions.js";
+import { updateLSArray } from "./local-storage.js";
+let tasksArray = JSON.parse(localStorage.getItem("tasks")) || [];
+export function idCreator() {
   let date = new Date();
   let id = date.getTime();
   return id;
 }
+export function createButton(classNames) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.classList.add(...classNames);
+  return button;
+}
 
-function appendNewTask(whereToInsert, id, taskText, status = false) {
+export function createImgElement(src, alt, className) {
+  const img = document.createElement("img");
+  img.src = src;
+  img.alt = alt;
+  img.classList.add(className);
+  return img;
+}
+
+export function createCheckbox(id, checked) {
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.classList.add("task-list__checkbox");
+  checkbox.id = id;
+  checkbox.checked = checked;
+  return checkbox;
+}
+
+export function createLabel(text, id) {
+  const label = document.createElement("label");
+  label.classList.add("task-list__text");
+  label.textContent = text;
+  label.setAttribute("for", id);
+  return label;
+}
+export function appendNewTask(whereToInsert, id, taskText, status = false) {
   const li = document.createElement("li");
   li.classList.add("task-list__item", "active");
   li.dataset.id = id;
@@ -122,71 +97,59 @@ function appendNewTask(whereToInsert, id, taskText, status = false) {
 
   whereToInsert.append(li);
 }
-// CterateNewTask(taskList);
+export function createEditSection(whereToInsert) {
+  const taskEdit = document.createElement("div");
+  taskEdit.classList.add("task-list__edit");
 
-function createButton(classNames) {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.classList.add(...classNames);
-  return button;
-}
+  let editInput = document.createElement("input");
+  editInput.classList.add("edit-input");
+  editInput.type = "text";
+  editInput.setAttribute("name", "edit-input");
+  editInput.value = whereToInsert.querySelector(".task-list__text").textContent;
 
-function createImgElement(src, alt, className) {
-  const img = document.createElement("img");
-  img.src = src;
-  img.alt = alt;
-  img.classList.add(className);
-  return img;
-}
+  let saveImg = createImgElement(
+    "./assets/images/save.svg",
+    "Save image",
+    "save-img",
+  );
 
-function createCheckbox(id, checked) {
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.classList.add("task-list__checkbox");
-  checkbox.id = id;
-  checkbox.checked = checked;
-  return checkbox;
-}
+  let cancelImg = createImgElement(
+    "./assets/images/cancel.svg",
+    "Cancel image",
+    "cancel-img",
+  );
 
-function createLabel(text, id) {
-  const label = document.createElement("label");
-  label.classList.add("task-list__text");
-  label.textContent = text;
-  label.setAttribute("for", id);
-  return label;
-}
+  let saveChangesBtn = createButton("save-changes");
+  saveChangesBtn.appendChild(saveImg);
 
-function getDataFromLS(whereToInsert, array) {
-  whereToInsert.innerHTML = "";
-  array.forEach((task) => {
-    appendNewTask(whereToInsert, task.taskId, task.taskBody, task.taskStatus);
+  let cancelChangesBtn = createButton("cancel-changes");
+  cancelChangesBtn.appendChild(cancelImg);
+
+  taskEdit.appendChild(editInput);
+  taskEdit.appendChild(saveChangesBtn);
+  taskEdit.appendChild(cancelChangesBtn);
+
+  whereToInsert.appendChild(taskEdit);
+
+  let idBox = Number(whereToInsert.getAttribute("data-id"));
+  saveChangesBtn.addEventListener("click", (event) => {
+    if (!isInputEmpty(editInput.value)) {
+      whereToInsert.querySelector(".task-list__text").textContent =
+        editInput.value;
+      updateTaskInfo(tasksArray, idBox);
+      whereToInsert.removeChild(taskEdit);
+    }
+  });
+
+  cancelChangesBtn.addEventListener("click", (event) => {
+    editInput.value =
+      whereToInsert.querySelector(".task-list__text").textContent;
+    whereToInsert.removeChild(taskEdit);
   });
 }
-// deleting tasks
 
-taskList.addEventListener("click", (event) => {
-  if (event.target.closest(".task-list__btn--delete")) {
-    let task = event.target.closest(".task-list__item");
-    let taskId = Number(task.dataset.id);
-    removeElementFromDom(task, taskList);
-    removeTaskFromArray(taskId, tasksArray);
-  }
-  if (event.target.closest(".task-list__btn--edit")) {
-    let task = event.target.closest(".task-list__item");
-    let taskId = Number(task.dataset.id);
-  }
-});
-
-function removeElementFromDom(element, fromWhere) {
-  fromWhere.removeChild(element);
-}
-
-function removeTaskFromArray(value, array) {
-  const index = array.findIndex((element) => element.taskId === value);
-  array.splice(index, 1);
-  updateLSArray("tasks", array);
-}
-
-function updateLSArray(arrayName, array) {
-  localStorage.setItem(arrayName, JSON.stringify(array));
+export function updateTaskInfo(array, id) {
+  const index = array.findIndex((element) => element.taskId === id);
+  array[index].taskBody = editInput.value;
+  updateLSArray("tasks", tasksArray);
 }
