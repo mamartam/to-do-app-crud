@@ -24,12 +24,16 @@
       <!-- header section with main title and theme switcher -->
       <section class="main__header header">
         <h1 class="header__title">My ToDo List</h1>
-        <div class="header__theme-toggle">
-          <input type="checkbox" id="theme-toggle-button" class="input" />
-          <label for="theme-toggle-button" class="label">
-            <div aria-hidden="true" class="circle">
+        <div class="header__theme-toggle theme-toggle">
+          <input
+            type="checkbox"
+            id="theme-toggle-button"
+            class="theme-toggle--input input"
+          />
+          <label for="theme-toggle-button" class="theme-toggle--label label">
+            <div aria-hidden="true" class="label--circle">
               <img
-                class="moon-sun-img"
+                class="moon-sun-img label--circle-img"
                 src="./assets/images/sun.svg"
                 alt="Sun and Moon images"
               />
