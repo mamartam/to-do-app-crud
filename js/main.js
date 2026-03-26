@@ -63,13 +63,20 @@ DOM_VAR.taskList.addEventListener("click", (event) => {
 });
 // navigation
 DOM_VAR.taskNavigation.addEventListener("click", (event) => {
-  event.target;
   let click = event.target;
+  if (click.closest(".btn")) {
+    DOM_VAR.navBtns.forEach((btn) => {
+      btn.classList.remove("active-nav-btn");
+    });
+  }
   if (click.closest(".all-btn")) {
+    click.classList.add("active");
     showAllTasks(tasksArray);
   } else if (click.closest(".active-btn")) {
+    click.classList.add("active-nav-btn");
     showActiveTasks(DOM_VAR.taskList, tasksArray);
   } else if (click.closest(".completed-btn")) {
+    click.classList.add("active-nav-btn");
     showCompletedTasks(DOM_VAR.taskList, tasksArray);
   }
 });
