@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/images/todo-tab-icon.svg"
+    />
+
+    <title>My ToDo list</title>
+  </head>
+  <body>
+    <script defer src="js/theme-toggle.js"></script>
+    <main class="main">
+      <!-- header section with main title and theme switcher -->
+      <section class="main__header header">
+        <h1 class="header__title">My ToDo List</h1>
+        <div class="header__theme-toggle">
+          <input type="checkbox" id="theme-toggle-button" class="input" />
+          <label for="theme-toggle-button" class="label">
+            <div aria-hidden="true" class="circle">
+              <img
+                class="moon-sun-img"
+                src="./assets/images/sun.svg"
+                alt="Sun and Moon images"
+              />
+            </div>
+            <div aria-hidden="true" class="light-mode">
+              <div aria-hidden="true" class="sun"></div>
+              <div aria-hidden="true" class="clouds-first-layer">
+                <div aria-hidden="true" class="lm-cloud1 lm"></div>
+                <div aria-hidden="true" class="lm-cloud2 lm"></div>
+              </div>
+              <div aria-hidden="true" class="clouds-second-layer">
+                <div aria-hidden="true" class="lm-cloud3 lm"></div>
+                <div aria-hidden="true" class="lm-cloud4 lm"></div>
+              </div>
+            </div>
+            <div class="dark-mode">
+              <div class="clouds-first-layer">
+                <div class="dm-cloud1 dm"></div>
+                <div class="dm-cloud2 dm"></div>
+              </div>
+              <div class="clouds-second-layer">
+                <div class="dm-cloud3 dm"></div>
+                <div class="dm-cloud4 dm"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </section>
+      <!-- section with form for adding tasks -->
+      <section class="main__form-section">
+        <form class="todo-form main__form">
+          <label class="todo-form__label" for="new-task">type your task</label>
+          <input
+            class="todo-form__input"
+            type="text"
+            id="new-task"
+            placeholder="Add new task.."
+          />
+          <button
+            class="todo-form__submit-btn todo-form__submit-btn--disabled"
+            type="submit"
+            disabled
+            aria-label="Add task"
+          >
+            <span class="span"></span>
+            <span class="span"></span>
+          </button>
+        </form>
+      </section>
+      <!-- navigation buttons -->
+      <section class="main__task-navigation">
+        <nav>
+          <li class="all-btn btn active-nav-btn button">All</li>
+          <li class="active-btn btn button">Active</li>
+          <li class="completed-btn btn button">Completed</li>
+        </nav>
+      </section>
+
+      <section class="main__tasks">
+        <ul class="task-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" defer src="js/main.js"></script>
+  </body>
+</html>
