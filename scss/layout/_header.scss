@@ -15,10 +15,10 @@
   &__title {
     color: var(--text-main);
     transition: color 0.3s ease-in-out;
-    @include absracts.mediaQueryUp(500px) {
+    @include absracts.mediaQueryUp(absracts.$largerScreens) {
       font-size: 2.5rem;
     }
-    @include absracts.mediaQueryDown(499px) {
+    @include absracts.mediaQueryDown(absracts.$smallerScreens) {
       font-size: 1.75rem;
     }
   }

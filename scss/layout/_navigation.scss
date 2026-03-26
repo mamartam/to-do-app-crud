@@ -18,10 +18,10 @@
       color: white;
       transition: border 0.1s ease-in-out;
       cursor: pointer;
-      @include absracts.mediaQueryUp(500px) {
+      @include absracts.mediaQueryUp(absracts.$largerScreens) {
         padding: 0.5rem 1.5rem;
       }
-      @include absracts.mediaQueryDown(499px) {
+      @include absracts.mediaQueryDown(absracts.$smallerScreens) {
         padding: 0.5rem 1.25rem;
       }
     }

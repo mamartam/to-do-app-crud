@@ -67,10 +67,10 @@
           visibility: visible;
         }
 
-        @include absracts.mediaQueryUp(500px) {
+        @include absracts.mediaQueryUp(absracts.$largerScreens) {
           display: flex;
         }
-        @include absracts.mediaQueryDown(499px) {
+        @include absracts.mediaQueryDown(absracts.$smallerScreens) {
           // display: none;
           visibility: hidden;
           position: absolute;
@@ -91,10 +91,10 @@
         width: 25px;
         height: 25px;
         cursor: pointer;
-        @include absracts.mediaQueryUp(500px) {
+        @include absracts.mediaQueryUp(absracts.$largerScreens) {
           display: none;
         }
-        @include absracts.mediaQueryDown(499px) {
+        @include absracts.mediaQueryDown(absracts.$smallerScreens) {
           display: block;
         }
       }
