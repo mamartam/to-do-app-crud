@@ -1,0 +1,23 @@
+@use "../absracts/index" as absracts;
+
+button,
+.button {
+  @include absracts.flex(unset, center, center);
+
+  padding: 0.5rem 1rem;
+
+  background-color: var(--color-primary);
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    color: var(--text-secondary);
+    transition: color 0.3s ease-in-out;
+  }
+}

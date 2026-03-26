@@ -1,0 +1,128 @@
+@use "../absracts/index" as absracts;
+
+.main {
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+  }
+  .task-list {
+    &__item {
+      // container of task
+      width: 100%;
+
+      @include absracts.flex(column, unset, unset);
+
+      margin-bottom: 1rem;
+      padding: 1rem;
+
+      border-radius: 1rem;
+
+      border: 1px solid var(--border);
+      transition:
+        border 0.3s linear,
+        box-shadow 0.3s linear;
+
+      box-shadow: var(--shadow);
+      // transition: box-shadow 0.3s linear;
+    }
+    &__main {
+      // part with checkbox and label and controls buttons
+      @include absracts.flex(row, space-between, start);
+    }
+    &__info {
+      // part with checkbox and label
+      @include absracts.flex(row, unset, start);
+    }
+    &__text {
+      // label
+      cursor: pointer;
+      word-break: break-word;
+
+      color: var(--text-main);
+      transition: color 0.3s ease-in-out;
+    }
+    &__controls {
+      // buttons edit and delete
+      margin-left: 1rem;
+
+      @include absracts.flex(row, unset, unset);
+
+      position: relative;
+      .btn {
+        @include absracts.flex(row, center, center);
+        width: 25px;
+        height: 25px;
+        padding: 0.15rem;
+        border-radius: 50%;
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+        &:nth-of-type(1) {
+          margin-right: 0.5rem;
+        }
+        &.show {
+          // display: flex;
+          visibility: visible;
+        }
+
+        @include absracts.mediaQueryUp(500px) {
+          display: flex;
+        }
+        @include absracts.mediaQueryDown(499px) {
+          // display: none;
+          visibility: hidden;
+          position: absolute;
+          z-index: 1;
+
+          &:nth-of-type(1) {
+            top: -25px;
+            left: 0px;
+          }
+          &:nth-of-type(2) {
+            top: -25px;
+            left: -35px;
+          }
+        }
+      }
+
+      .menu-dots {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        @include absracts.mediaQueryUp(500px) {
+          display: none;
+        }
+        @include absracts.mediaQueryDown(499px) {
+          display: block;
+        }
+      }
+    }
+    &__edit {
+      @include absracts.flex(row, space-between, unset);
+      margin-top: 1rem;
+
+      .save-changes {
+        @include absracts.flex(unset, center, center);
+        width: 25px;
+        height: 25px;
+        padding: 0.15rem;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+      }
+      .cancel-changes {
+        @include absracts.flex(unset, center, center);
+        width: 25px;
+        height: 25px;
+        padding: 0.15rem;
+        border-radius: 50%;
+      }
+      img {
+        display: block;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}

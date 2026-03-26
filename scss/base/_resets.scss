@@ -1,0 +1,27 @@
+@use "../absracts/index" as absracts;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: "Funnel Sans", sans-serif;
+  @include absracts.flex(unset, center, start);
+  background-color: var(--bg-main);
+  transition: background-color 0.3s ease-in-out;
+}
+li {
+  list-style-type: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+input {
+  cursor: text;
+  background-color: transparent;
+  border: 0;
+}

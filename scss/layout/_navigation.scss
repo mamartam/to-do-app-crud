@@ -1,0 +1,35 @@
+@use "../absracts/index" as absracts;
+.main {
+  &__task-navigation {
+    width: 100%;
+
+    margin-bottom: 2rem;
+    nav {
+      @include absracts.flex(row, space-around, center);
+    }
+    ul {
+      @include absracts.flex(row, space-around, center);
+      flex-wrap: wrap;
+    }
+    .btn {
+      border: 0;
+      border-radius: 1rem;
+      border: 2px solid var(--color-primary-light);
+      color: white;
+      transition: border 0.1s ease-in-out;
+      cursor: pointer;
+      @include absracts.mediaQueryUp(500px) {
+        padding: 0.5rem 1.5rem;
+      }
+      @include absracts.mediaQueryDown(499px) {
+        padding: 0.5rem 1.25rem;
+      }
+    }
+    .active-nav-btn {
+      border: 2px solid var(--bg-main);
+      .dark & {
+        border-color: var(--bg-main);
+      }
+    }
+  }
+}

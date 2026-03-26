@@ -1,0 +1,32 @@
+@use "../absracts/index" as absracts;
+
+input {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--color-primary);
+  transition: border-radius 0.3s linear;
+  padding: 0.5rem;
+  margin-right: 2rem;
+  color: var(--text-main);
+  transition: color 0.3s ease-in-out;
+
+  &::placeholder {
+    font-family: "Funnel Sans", sans-serif;
+    font-style: italic;
+    color: var(--text-secondary);
+    transition: color 0.3s ease-in-out;
+  }
+  &:focus-visible {
+    border: 2px solid var(--color-primary);
+    outline: none;
+    border-radius: 0.5rem;
+    transition: border-radius 0.3s linear;
+  }
+  &:active {
+    border: 2px solid var(--color-primary);
+    outline: none;
+    border-radius: 0.5rem;
+    transition: border-radius 0.3s linear;
+  }
+}

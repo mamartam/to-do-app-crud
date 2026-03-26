@@ -1,0 +1,18 @@
+@use "./base/index" as base;
+@use "./layout/index" as layat;
+@use "./absracts/index" as absracts;
+@use "./components/index" as components;
+
+.main {
+  width: 100%;
+  max-width: 500px;
+  margin: 2.5rem 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow);
+  transition:
+    box-shadow 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
