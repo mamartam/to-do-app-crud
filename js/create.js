@@ -54,7 +54,7 @@ function disableElement(element) {
 
 function reportDataIntoLS(textContent, status, id, array) {
   array.push({ taskId: id, taskStatus: status, taskBody: textContent });
-  localStorage.setItem("tasks", JSON.stringify(array));
+  updateLSArray("tasks", array);
 }
 
 // crete id function
@@ -161,4 +161,32 @@ function getDataFromLS(whereToInsert, array) {
   array.forEach((task) => {
     appendNewTask(whereToInsert, task.taskId, task.taskBody, task.taskStatus);
   });
+}
+// deleting tasks
+
+taskList.addEventListener("click", (event) => {
+  if (event.target.closest(".task-list__btn--delete")) {
+    let task = event.target.closest(".task-list__item");
+    let taskId = Number(task.dataset.id);
+    removeElementFromDom(task, taskList);
+    removeTaskFromArray(taskId, tasksArray);
+  }
+  if (event.target.closest(".task-list__btn--edit")) {
+    let task = event.target.closest(".task-list__item");
+    let taskId = Number(task.dataset.id);
+  }
+});
+
+function removeElementFromDom(element, fromWhere) {
+  fromWhere.removeChild(element);
+}
+
+function removeTaskFromArray(value, array) {
+  const index = array.findIndex((element) => element.taskId === value);
+  array.splice(index, 1);
+  updateLSArray("tasks", array);
+}
+
+function updateLSArray(arrayName, array) {
+  localStorage.setItem(arrayName, JSON.stringify(array));
 }
