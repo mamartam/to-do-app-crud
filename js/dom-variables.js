@@ -1,12 +1,8 @@
 export const DOM_VAR = {
-  myForm: document.querySelector(".todo-form"),
-  addBtn: document.querySelector(".todo-form__submit-btn"),
-  newTask: document.querySelector("#new-task"),
-  listOfTasks: document.querySelector(".task-list"),
-
-  allBtn: document.querySelector(".all-btn"),
-  activeBtn: document.querySelector(".active-btn"),
-  completedBtn: document.querySelector(".completed-btn"),
-  spans: document.querySelectorAll(".span"),
-  mainTaskNavigation: document.querySelector(".main__task-navigation"),
+  formToAddTask: document.querySelector(".todo-form"),
+  newTaskInput: document.querySelector("#new-task"),
+  addTaskBtn: document.querySelector(".todo-form__submit-btn"),
+  decorationSpans: document.querySelectorAll(".span"),
+  taskList: document.querySelector(".task-list"),
+  taskNavigation: document.querySelector(".main__task-navigation"),
 };
