@@ -17,11 +17,9 @@ export function removeClassWithDelay(elements, className, delayTime) {
     });
   }, delayTime);
 }
-
 export function isInputEmpty(inputField) {
   return inputField.length === 0;
 }
-
 export function disableElement(element) {
   element.disabled = true;
 }
@@ -45,5 +43,13 @@ export function showCompletedTasks(whereToInsert, array) {
   array.forEach((task) => {
     if (task.taskStatus === true)
       appendNewTask(whereToInsert, task.taskId, task.taskBody, task.taskStatus);
+  });
+}
+export function menuDotsFunc(event) {
+  let controlsBtns = event.target
+    .closest(".task-list__controls")
+    .getElementsByTagName("button");
+  Array.from(controlsBtns).forEach((element) => {
+    element.classList.toggle("show");
   });
 }
