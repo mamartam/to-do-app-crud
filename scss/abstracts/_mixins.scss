@@ -1,0 +1,20 @@
+@mixin mediaQueryUp($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+@mixin mediaQueryDown($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+@mixin flex(
+  $flex-direction: unset,
+  $justify-content: unset,
+  $align-items: unset
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
