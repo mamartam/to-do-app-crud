@@ -3,9 +3,7 @@
 import { isInputEmpty } from "./functions.js";
 import { updateLSArray } from "./local-storage.js";
 export function idCreator() {
-  let date = new Date();
-  let id = date.getTime();
-  return id;
+  return crypto.randomUUID();
 }
 export function createButton(classNames) {
   const button = document.createElement("button");
@@ -131,7 +129,7 @@ export function createEditSection(whereToInsert, array) {
 
   whereToInsert.appendChild(taskEdit);
 
-  let idBox = Number(whereToInsert.getAttribute("data-id"));
+  let idBox = whereToInsert.getAttribute("data-id");
   saveChangesBtn.addEventListener("click", (event) => {
     if (!isInputEmpty(editInput.value)) {
       whereToInsert.querySelector(".task-list__text").textContent =
