@@ -1,4 +1,4 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 %positionning {
   position: absolute;
 }
@@ -11,14 +11,14 @@
 
 .header {
   margin-bottom: 2rem;
-  @include absracts.flex(row, space-between, center);
+  @include abstracts.flex(row, space-between, center);
   &__title {
     color: var(--text-main);
     transition: color 0.3s ease-in-out;
-    @include absracts.mediaQueryUp(absracts.$largerScreens) {
+    @include abstracts.mediaQueryUp(abstracts.$largerScreens) {
       font-size: 2.5rem;
     }
-    @include absracts.mediaQueryDown(absracts.$smallerScreens) {
+    @include abstracts.mediaQueryDown(abstracts.$smallerScreens) {
       font-size: 1.75rem;
     }
   }
@@ -37,7 +37,7 @@
     height: 45px;
     background: var(--label-linear-gradiend);
     border-radius: 35px;
-    @include absracts.flex(unset, start, center);
+    @include abstracts.flex(unset, start, center);
     padding: 0 5px;
     position: relative;
     z-index: 1;
@@ -51,7 +51,7 @@
       border-radius: 50%;
       border: 1px solid var(--circle-border);
       z-index: 4;
-      @include absracts.flex(unset, center, center);
+      @include abstracts.flex(unset, center, center);
       @extend %transition-transform-3s;
       background: var(--circle-radial-gradient);
       &-img {

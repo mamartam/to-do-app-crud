@@ -1,10 +1,10 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 
 input[type="checkbox"] {
   width: 25px;
   height: 25px;
 
-  @include absracts.flex(unset, center, center);
+  @include abstracts.flex(unset, center, center);
   flex-shrink: 0;
 
   margin-right: 0.5rem;

@@ -1,14 +1,15 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 .main {
   &__task-navigation {
     width: 100%;
 
     margin-bottom: 2rem;
     nav {
-      @include absracts.flex(row, space-around, center);
+      @include abstracts.flex(row, space-around, center);
     }
     ul {
-      @include absracts.flex(row, space-around, center);
+      width: 100%;
+      @include abstracts.flex(row, space-around, center);
       flex-wrap: wrap;
     }
     .btn {
@@ -18,17 +19,17 @@
       color: white;
       transition: border 0.1s ease-in-out;
       cursor: pointer;
-      @include absracts.mediaQueryUp(absracts.$largerScreens) {
+      @include abstracts.mediaQueryUp(abstracts.$largerScreens) {
         padding: 0.5rem 1.5rem;
       }
-      @include absracts.mediaQueryDown(absracts.$smallerScreens) {
+      @include abstracts.mediaQueryDown(abstracts.$smallerScreens) {
         padding: 0.5rem 1.25rem;
       }
     }
     .active-nav-btn {
-      border: 2px solid var(--bg-main);
+      border: 2px solid var(--attention);
       .dark & {
-        border-color: var(--bg-main);
+        border-color: var(--attention);
       }
     }
   }

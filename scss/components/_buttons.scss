@@ -1,8 +1,8 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 
 button,
 .button {
-  @include absracts.flex(unset, center, center);
+  @include abstracts.flex(unset, center, center);
 
   padding: 0.5rem 1rem;
 

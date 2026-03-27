@@ -1,4 +1,8 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
+@font-face {
+  font-family: "Funnel Sans", sans-serif;
+  src: url("../../assets/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf");
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,7 +12,7 @@ body {
   width: 100%;
   min-height: 100vh;
   font-family: "Funnel Sans", sans-serif;
-  @include absracts.flex(unset, center, start);
+  @include abstracts.flex(unset, center, start);
   background-color: var(--bg-main);
   transition: background-color 0.3s ease-in-out;
 }

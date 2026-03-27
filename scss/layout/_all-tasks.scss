@@ -1,4 +1,4 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 
 .main {
   &__tasks {
@@ -10,7 +10,7 @@
       // container of task
       width: 100%;
 
-      @include absracts.flex(column, unset, unset);
+      @include abstracts.flex(column, unset, unset);
 
       margin-bottom: 1rem;
       padding: 1rem;
@@ -27,11 +27,11 @@
     }
     &__main {
       // part with checkbox and label and controls buttons
-      @include absracts.flex(row, space-between, start);
+      @include abstracts.flex(row, space-between, start);
     }
     &__info {
       // part with checkbox and label
-      @include absracts.flex(row, unset, start);
+      @include abstracts.flex(row, unset, start);
     }
     &__text {
       // label
@@ -45,11 +45,11 @@
       // buttons edit and delete
       margin-left: 1rem;
 
-      @include absracts.flex(row, unset, unset);
+      @include abstracts.flex(row, unset, unset);
 
       position: relative;
       .btn {
-        @include absracts.flex(row, center, center);
+        @include abstracts.flex(row, center, center);
         width: 25px;
         height: 25px;
         padding: 0.15rem;
@@ -67,10 +67,10 @@
           visibility: visible;
         }
 
-        @include absracts.mediaQueryUp(absracts.$largerScreens) {
+        @include abstracts.mediaQueryUp(abstracts.$largerScreens) {
           display: flex;
         }
-        @include absracts.mediaQueryDown(absracts.$smallerScreens) {
+        @include abstracts.mediaQueryDown(abstracts.$smallerScreens) {
           // display: none;
           visibility: hidden;
           position: absolute;
@@ -91,20 +91,20 @@
         width: 25px;
         height: 25px;
         cursor: pointer;
-        @include absracts.mediaQueryUp(absracts.$largerScreens) {
+        @include abstracts.mediaQueryUp(abstracts.$largerScreens) {
           display: none;
         }
-        @include absracts.mediaQueryDown(absracts.$smallerScreens) {
+        @include abstracts.mediaQueryDown(abstracts.$smallerScreens) {
           display: block;
         }
       }
     }
     &__edit {
-      @include absracts.flex(row, space-between, unset);
+      @include abstracts.flex(row, space-between, unset);
       margin-top: 1rem;
 
       .save-changes {
-        @include absracts.flex(unset, center, center);
+        @include abstracts.flex(unset, center, center);
         width: 25px;
         height: 25px;
         padding: 0.15rem;
@@ -112,7 +112,7 @@
         margin-right: 0.5rem;
       }
       .cancel-changes {
-        @include absracts.flex(unset, center, center);
+        @include abstracts.flex(unset, center, center);
         width: 25px;
         height: 25px;
         padding: 0.15rem;

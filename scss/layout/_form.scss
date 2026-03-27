@@ -1,4 +1,4 @@
-@use "../absracts/index" as absracts;
+@use "../abstracts/index" as abstracts;
 .main {
   &__form-section {
     width: 100%;
@@ -6,7 +6,7 @@
   }
   &__form {
     width: 100%;
-    @include absracts.flex(row, unset, center);
+    @include abstracts.flex(row, unset, center);
   }
   .todo-form {
     &__label {
@@ -21,7 +21,7 @@
       border: 0;
     }
     &__submit-btn {
-      @include absracts.flex(column, center, center);
+      @include abstracts.flex(column, center, center);
       flex-shrink: 0;
       width: 45px;
       height: 45px;
