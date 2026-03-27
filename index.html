@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple and efficient Todo application to manage your daily tasks, built with Vanilla JavaScript and BEM methodology."
+    />
     <link rel="stylesheet" href="./dist/css/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="icon"
       type="image/x-icon"
@@ -29,6 +29,7 @@
             type="checkbox"
             id="theme-toggle-button"
             class="theme-toggle--input input"
+            aria-label="Checkbox for theme toggle"
           />
           <label for="theme-toggle-button" class="theme-toggle--label label">
             <div aria-hidden="true" class="label--circle">
@@ -86,9 +87,13 @@
       <!-- navigation buttons -->
       <section class="main__task-navigation">
         <nav>
-          <li><a href="#" class="all-btn btn active-nav-btn button">All</a></li>
-          <li><a href="#" class="active-btn btn button">Active</a></li>
-          <li><a href="#" class="completed-btn btn button">Completed</a></li>
+          <ul>
+            <li>
+              <a href="#" class="all-btn btn active-nav-btn button">All</a>
+            </li>
+            <li><a href="#" class="active-btn btn button">Active</a></li>
+            <li><a href="#" class="completed-btn btn button">Completed</a></li>
+          </ul>
         </nav>
       </section>
 
