@@ -1,13 +1,13 @@
 :root {
   --bg-main: #f7f7fb;
   --bg-card: #ffffff;
-  --color-primary: #7c7cff;
-  --color-primary-light: #a5a6ff;
+  --color-primary: #5858ff;
+  --color-primary-light: #7c7cff;
   --text-main: #2d2d2f;
   --text-secondary: #6b6b75;
   --border: #e6e6ef;
   --success: #7ed6a5;
-  --danger: #ff8a8a;
+  --attention: #ffd700;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   --label-linear-gradiend: linear-gradient(20deg, rgb(118, 150, 191) 0%, rgb(185, 208, 225) 50%, rgb(223, 224, 208) 100%);
   --circle-radial-gradient: radial-gradient(circle, rgb(47, 56, 68) 0%, rgb(22, 32, 48) 100%);
@@ -19,13 +19,13 @@
 [data-theme=dark] {
   --bg-main: #1e1f25;
   --bg-card: #2a2c35;
-  --color-primary: #8f90ff;
-  --color-primary-light: #b3b4ff;
+  --color-primary: #a5a6ff;
+  --color-primary-light: #c8c9ff;
   --text-main: #f1f1f5;
   --text-secondary: #a1a1aa;
   --border: #3a3c45;
   --success: #7ed6a5;
-  --danger: #ff8a8a;
+  --attention: #ffd700;
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   --label-linear-gradiend: linear-gradient(197deg, rgb(145, 150, 151) 0%, rgb(20, 31, 47) 100%);
   --circle-radial-gradient: radial-gradient(circle, rgb(225, 206, 153) 0%, rgb(228, 199, 122) 100%);
@@ -34,6 +34,10 @@
   --circle-border: #fefcf4;
 }
 
+@font-face {
+  font-family: "Funnel Sans", sans-serif;
+  src: url("../../assets/fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf");
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -406,6 +410,7 @@ a {
   align-items: center;
 }
 .main__task-navigation ul {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -431,10 +436,10 @@ a {
   }
 }
 .main__task-navigation .active-nav-btn {
-  border: 2px solid var(--bg-main);
+  border: 2px solid var(--attention);
 }
 .dark .main__task-navigation .active-nav-btn {
-  border-color: var(--bg-main);
+  border-color: var(--attention);
 }
 
 .main__tasks {
