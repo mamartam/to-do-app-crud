@@ -2,7 +2,6 @@
 
 import { isInputEmpty } from "./functions.js";
 import { updateLSArray } from "./local-storage.js";
-let tasksArray = JSON.parse(localStorage.getItem("tasks")) || [];
 export function idCreator() {
   let date = new Date();
   let id = date.getTime();
@@ -10,6 +9,7 @@ export function idCreator() {
 }
 export function createButton(classNames) {
   const button = document.createElement("button");
+  button.setAttribute("aria-label", classNames[0]);
   button.type = "button";
   button.classList.add(...classNames);
   return button;
@@ -57,14 +57,14 @@ export function appendNewTask(whereToInsert, id, taskText, status = false) {
   const label = createLabel(taskText, id);
 
   const editBtn = createButton([
-    "task-list__btn",
     "task-list__btn--edit",
+    "task-list__btn",
     "btn",
   ]);
 
   const deleteBtn = createButton([
-    "task-list__btn",
     "task-list__btn--delete",
+    "task-list__btn",
     "btn",
   ]);
 
@@ -97,7 +97,7 @@ export function appendNewTask(whereToInsert, id, taskText, status = false) {
 
   whereToInsert.append(li);
 }
-export function createEditSection(whereToInsert) {
+export function createEditSection(whereToInsert, array) {
   const taskEdit = document.createElement("div");
   taskEdit.classList.add("task-list__edit");
 
@@ -119,10 +119,10 @@ export function createEditSection(whereToInsert) {
     "cancel-img",
   );
 
-  let saveChangesBtn = createButton("save-changes");
+  let saveChangesBtn = createButton(["save-changes"]);
   saveChangesBtn.appendChild(saveImg);
 
-  let cancelChangesBtn = createButton("cancel-changes");
+  let cancelChangesBtn = createButton(["cancel-changes"]);
   cancelChangesBtn.appendChild(cancelImg);
 
   taskEdit.appendChild(editInput);
@@ -136,7 +136,7 @@ export function createEditSection(whereToInsert) {
     if (!isInputEmpty(editInput.value)) {
       whereToInsert.querySelector(".task-list__text").textContent =
         editInput.value;
-      updateTaskInfo(tasksArray, idBox);
+      updateTaskInfo(array, idBox, editInput);
       whereToInsert.removeChild(taskEdit);
     }
   });
@@ -148,8 +148,8 @@ export function createEditSection(whereToInsert) {
   });
 }
 
-export function updateTaskInfo(array, id) {
+export function updateTaskInfo(array, id, input) {
   const index = array.findIndex((element) => element.taskId === id);
-  array[index].taskBody = editInput.value;
-  updateLSArray("tasks", tasksArray);
+  array[index].taskBody = input.value;
+  updateLSArray("tasks", array);
 }
