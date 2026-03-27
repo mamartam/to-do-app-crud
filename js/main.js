@@ -1,6 +1,6 @@
 // IMPORTING DOM VARIABLES
 import { DOM_VAR } from "./dom-variables.js";
-// IMPORTING FUNCTIONS
+// IMPORTING GENERAL FUNCTIONS
 import {
   clearInputField,
   addClass,
@@ -11,15 +11,18 @@ import {
   showAllTasks,
   showActiveTasks,
   showCompletedTasks,
+  menuDotsFunc,
 } from "./functions.js";
+// IMPORTING FUNCTION FOR CREATING
 import { idCreator, createEditSection, appendNewTask } from "./create.js";
+// IMPORTING FUNCTIONS FOR DELETING
 import { removeElementFromDom, removeTaskFromArray } from "./delete.js";
-
+// IMPORTING FUNCTION FOR SAVING
 import { getDataFromLS, reportDataIntoLS } from "./local-storage.js";
 
 let tasksArray = JSON.parse(localStorage.getItem("tasks")) || [];
-console.log(tasksArray);
 getDataFromLS(DOM_VAR.taskList, tasksArray);
+
 // FORM VALIDATION TO ADD NEW TASKS
 DOM_VAR.formToAddTask.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -39,7 +42,8 @@ DOM_VAR.newTaskInput.addEventListener("input", (event) => {
   let inputValue = String(event.target.value).trim();
   DOM_VAR.addTaskBtn.disabled = isInputEmpty(inputValue);
 });
-// COLOBORATE WITH DOM
+
+// COLOBORATION WITH DOM
 DOM_VAR.taskList.addEventListener("click", (event) => {
   // IF USER WANTS TO DELETE TASK
   if (event.target.closest(".task-list__btn--delete")) {
@@ -51,7 +55,7 @@ DOM_VAR.taskList.addEventListener("click", (event) => {
   // IF USER WANTS TO EDIT TASK
   if (event.target.closest(".task-list__btn--edit")) {
     let task = event.target.closest(".task-list__item");
-    createEditSection(task);
+    createEditSection(task, tasksArray);
   }
   if (event.target.closest(".task-list__checkbox")) {
     let task = event.target.closest(".task-list__item");
@@ -59,6 +63,9 @@ DOM_VAR.taskList.addEventListener("click", (event) => {
     let taskStatus = event.target.closest(".task-list__checkbox").checked;
     console.log(taskStatus);
     updateTaskStatus(tasksArray, taskId, taskStatus);
+  }
+  if (event.target.classList.contains("menu-dots")) {
+    menuDotsFunc(event);
   }
 });
 // navigation
@@ -78,5 +85,18 @@ DOM_VAR.taskNavigation.addEventListener("click", (event) => {
   } else if (click.closest(".completed-btn")) {
     click.classList.add("active-nav-btn");
     showCompletedTasks(DOM_VAR.taskList, tasksArray);
+  }
+});
+
+document.body.addEventListener("click", (event) => {
+  let controlsBtns = document.querySelectorAll(
+    ".task-list__controls > button ",
+  );
+  if (event.target.classList.contains("menu-dots")) {
+    return;
+  } else {
+    controlsBtns.forEach((element) => {
+      element.classList.remove("show");
+    });
   }
 });
