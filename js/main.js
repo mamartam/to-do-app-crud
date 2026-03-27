@@ -48,7 +48,7 @@ DOM_VAR.taskList.addEventListener("click", (event) => {
   // IF USER WANTS TO DELETE TASK
   if (event.target.closest(".task-list__btn--delete")) {
     let task = event.target.closest(".task-list__item");
-    let taskId = Number(task.dataset.id);
+    let taskId = task.dataset.id;
     removeElementFromDom(task, DOM_VAR.taskList);
     removeTaskFromArray(taskId, tasksArray);
   }
@@ -59,7 +59,7 @@ DOM_VAR.taskList.addEventListener("click", (event) => {
   }
   if (event.target.closest(".task-list__checkbox")) {
     let task = event.target.closest(".task-list__item");
-    let taskId = Number(task.dataset.id);
+    let taskId = task.dataset.id;
     let taskStatus = event.target.closest(".task-list__checkbox").checked;
     console.log(taskStatus);
     updateTaskStatus(tasksArray, taskId, taskStatus);
@@ -77,7 +77,7 @@ DOM_VAR.taskNavigation.addEventListener("click", (event) => {
     });
   }
   if (click.closest(".all-btn")) {
-    click.classList.add("active");
+    click.classList.add("active-nav-btn");
     showAllTasks(tasksArray);
   } else if (click.closest(".active-btn")) {
     click.classList.add("active-nav-btn");
